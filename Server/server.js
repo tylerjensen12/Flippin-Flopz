@@ -17,6 +17,7 @@ app.use(express.static('Pics'));
 let trick = [
 {
     name: 'Back Tuck to Back',
+    difficulty: 3,
     gifAddress: 'backTuckToBack.gif',
     Address: '20221104_181129_1.mp4',
 }]

@@ -9,28 +9,26 @@
     </head>
     <body>
         <header>
-            <h1>Welcome to Flippin Flopz</h1>
+            <h1>A game of FLIP</h1>
         </header>
         <section>
-            <h1>A game of FLIP</h1>
+            <form>
+                <p class="trickEntry">Add Your Own Trick Here:</p>
+                <input type="text" id="input" placeholder="Name of trick">
+                <p class="trickEntry">Difficulty:</p>
+                <span class="radioButton">
+                    <input type="radio" name="difficulty" id="1"> 1
+                    <input type="radio" name="difficulty" id="2"> 2
+                    <input type="radio" name="difficulty" id="3"> 3
+                    <input type="radio" name="difficulty" id="4"> 4
+                    <input type="radio" name="difficulty" id="5"> 5
+                </span>
+                <p class="trickEntry">Upload Your Trick as a gif:</p>
+                <input type="file" accept="image/gif">
+                <input type="submit" class="submitButton">
+            </form>
+            <ul></ul>
         </section>
-
-        <form>
-            <p class="trickEntry">Add Your Own Trick Here:</p>
-            <input type="text" id="input" placeholder="Name of trick">
-            <p class="trickEntry">Difficulty:</p>
-            <div class="radioButton">
-                <input type="radio" name="difficulty" id="1"> 1
-                <input type="radio" name="difficulty" id="2"> 2
-                <input type="radio" name="difficulty" id="3"> 3
-                <input type="radio" name="difficulty" id="4"> 4
-                <input type="radio" name="difficulty" id="5"> 5
-            </div>
-            <p class="trickEntry">Upload Your Trick as a gif:</p>
-            <input type="file" accept="image/gif">
-            <input type="submit" class="submitButton">
-        </form>
-        <ul></ul>
         
         <!-- <script src="/axios"></script> -->
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

@@ -4,7 +4,12 @@ const trickContainer = document.querySelector('ul')
 function makeTrickCard(tricks){
     let trickCard = document.createElement('div')
     trickCard.innerHTML = `<h2>${tricks.name}</h2>
-    <button class="next">Next Trick</button>
+    <div class="next">
+    <button id="minus">-</button>
+    <p class="difficulty">Difficulty: ${tricks.difficulty}</p>
+    <button id="plus">+</button>
+    <button id="next" class="nextTrick">Next Trick</button>
+    </div>
     <img src="/${tricks.gifAddress}">
     <video controls autoplay muted loop src="/${tricks.Address}"></video>`
     trickCard.classList.add('trick')
@@ -33,7 +38,7 @@ function makeTrickCard(tricks){
 // }
 
 function getTrick(){
-    axios.get('http://localhost:5454/tricks')
+    axios.get('https://flippin-flopz.herokuapp.com/tricks')
     .then((res) => {
         for(let i = 0; i < res.data.length; i++){
             makeTrickCard(res.data[i])
