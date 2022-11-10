@@ -1,0 +1,121 @@
+body {
+    margin: 0px;
+    background-color: #cdcdcd;
+    height: 95vh;
+    width: 100vw;
+}
+
+header {
+    background-color: #011638;
+    width: 100vw;
+    height: 135px;
+    color: #cdcdcd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+}
+
+section {
+    color: #011638;
+    display: flex;
+    justify-content: center;
+}
+
+div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    }
+
+form {
+    margin-left: 10px;
+    padding: 20px;
+    background-color: #e4e4e4;
+    border: 3px solid black;
+    border-radius: 10px;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+input {
+    border-radius: 5px;
+    margin: 5px;
+}
+
+.submitButton {
+    width: 75px;
+    margin: 15px;
+}
+
+.submitButton:hover {
+    background-color: aliceblue;
+    box-shadow: 0px 0px 5px grey;
+}
+
+input[type="radio"] {
+    appearance: none;
+    margin: 5px;
+    font: inherit;
+    color: black;
+    width: 1.15em;
+    height: 1.15em;
+    border: 2px solid black;
+    border-radius: 50%;  
+    display: grid;
+    place-content: center;
+}
+  
+input[type="radio"]::before {
+    content: "";
+    width: 0.65em;
+    height: 0.65em;
+    border-radius: 50%;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    background-color: #364156;
+}
+  
+input[type="radio"]:checked::before {
+    transform: scale(1);
+}
+
+.trickEntry {
+    margin-bottom: 0px;
+}
+
+.trick {
+    display: flex;
+    flex-direction: column;
+}
+
+h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #011638;
+    color: #cdcdcd;
+    width: 700px;
+    height: 125px;
+    border-radius: 10px;
+}
+
+img {
+    width: 500px;
+    height: 500px;
+    border-radius: 20px;
+}
+
+.next {
+    display: flex;
+    justify-content: end;
+}
+
+video {
+    width: 500px;
+    height: 500px;
+    border-radius: 20px;
+}
