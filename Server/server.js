@@ -1,11 +1,9 @@
 const express = require('express')
-const cors = require('cors')
 require('dotenv').config()
 
 const app = express()
 
 app.use(express.json())
-app.use(cors())
 
 const {home, style, js, axios} = require("./controller")
 const {tricks} = require("./data")
