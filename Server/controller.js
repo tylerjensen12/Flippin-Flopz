@@ -1,4 +1,5 @@
-const path = require('path')
+const {tricks} = require('./data.js')
+
 const Sequelize = require('sequelize')
 const {CONNECTION_STRING} = process.env
 
@@ -12,22 +13,6 @@ const sequelize = new Sequelize(CONNECTION_STRING, {
 })
 
 module.exports = {
-    home: (req, res) => {
-        res.sendFile(path.join(__dirname, "../Public/Welcome.html"))
-    },
-
-    style: (req, res) => {
-        res.sendFile(path.join(__dirname, "../Public/styles.css"))
-    },
-
-    js: (req, res) => {
-        res.sendFile(path.join(__dirname, "../Public/index.js"))
-    },
-
-    // axios: (req, res) => {
-    //     res.sendFile(path.join(__dirname, "../node_modules/axios/dist/axios.min.js"))
-    // },
-
     seed: (req, res) => {
         sequelize.query(`
         create table tricks (

@@ -1,30 +1,64 @@
 const express = require('express')
+const path = require('path')
 require('dotenv').config()
 
 const app = express()
 
 app.use(express.json())
+app.use(express.static('Pics'))
 
-const {home, style, js, axios} = require("./controller")
 const {tricks} = require("./data")
 
-app.get("/", home)
-app.get("/css", style)
-app.get("/js", js)
-// app.get("/axios", axios)
-app.use(express.static('Pics'));
+app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "../Public/Welcome.html"))
+})
 
-let trick = [
-{
-    name: 'Back Tuck to Back',
-    difficulty: 3,
-    gifAddress: 'backTuckToBack.gif',
-    Address: '20221104_181129_1.mp4',
-}]
+app.get("/css", (req, res) => {
+    res.sendFile(path.join(__dirname, "../Public/styles.css"))
+})
 
-app.get("/tricks", (req, res) => {
-    console.log(trick)
-    res.status(200).send(trick)
+app.get("/js", (req, res) => {
+    res.sendFile(path.join(__dirname, "../Public/index.js"))
+})
+
+app.get("/tricks", (req, res) => res.status(200).send(tricks))
+
+app.put("/tricks/:id", (req, res) => {
+    let type = req.body.type
+    let id = req.params.id
+    let index = tricks.findIndex(element => element.id === +id)
+
+    if(type === 'plus'){
+        tricks[index].difficulty++
+        res.status(200).send(tricks[index])
+    } else if (type === 'minus'){
+        tricks[index].difficulty--
+        res.status(200).send(tricks[index])
+    } else {
+        res.sendStatus(400)
+    }
+})
+
+app.post('/tricks', (req, res) => {
+    const {name, difficulty, gifAddress} = req.body
+
+    let greatestId = -1
+    for(let i = 0; i < tricks.length; i++){
+        if(tricks[i].id > greatestId){
+            greatestId = tricks[i].id
+        }
+    }
+    let nextId = greatestId + 1
+
+    let newTrick = {
+        id: nextId,
+        name,
+        difficulty,
+        gifAddress
+    }
+
+    tricks.push(newTrick)
+    res.status(200).send(tricks)
 })
 
 const {PORT} = process.env

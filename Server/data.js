@@ -1,22 +1,11 @@
-/*
-const express = require('express')
-const path = require('path')
-const app = express()
-
-app.use(express.json())
-*/
 module.exports = {
 
     tricks: [
         {
+            id: 1,
             name: 'Porpoise',
             difficulty: 2,
             gifAddress: 'porpoise.gif',
-        },
-        {
-            name: 'Back Tuck',
-            difficulty: 2,
-            gifAddress: 'backTuck.gif',
         },
         {
             id: 2,
@@ -50,16 +39,16 @@ module.exports = {
         },
         {
             id: 7,
-            name: 'Front Full',
+            name: 'Cody',
             difficulty: 4,
-            gifAddress: 'frontFull.gif',
+            gifAddress: 'cody.gif',
         },
-        {
-            id: 8,
-            name: 'Back Full',
-            difficulty: 4,
-            gifAddress: 'backFull.gif',
-        },
+        // {
+        //     id: 8,
+        //     name: 'Back Full',
+        //     difficulty: 4,
+        //     gifAddress: 'backFull.gif',
+        // },
         {
             id: 9,
             name: 'Back Drop',
@@ -72,18 +61,18 @@ module.exports = {
             difficulty: 1,
             gifAddress: 'bellyDrop.gif',
         },
-        {
-            id: 11,
-            name: 'Belly Spin',
-            difficulty: 2,
-            gifAddress: 'bellySpin.gif',
-        },
-        {
-            id: 12,
-            name: 'Back Spin',
-            difficulty: 3,
-            gifAddress: 'backSpin.gif',
-        },
+        // {
+        //     id: 11,
+        //     name: 'Belly Spin',
+        //     difficulty: 2,
+        //     gifAddress: 'bellySpin.gif',
+        // },
+        // {
+        //     id: 12,
+        //     name: 'Back Spin',
+        //     difficulty: 3,
+        //     gifAddress: 'backSpin.gif',
+        // },
         {
             id: 13,
             name: 'Front Ball Out',
@@ -101,6 +90,12 @@ module.exports = {
             name: 'Cannon Ball',
             difficulty: 1,
             gifAddress: 'cannonBall.gif',
+        },
+        {
+            id: 16,
+            name: 'Back Tuck',
+            difficulty: 2,
+            gifAddress: 'backTuck.gif',
         },
         
     ]
