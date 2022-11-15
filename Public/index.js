@@ -1,26 +1,10 @@
-console.log('hello world')
 const trickContainer = document.querySelector('ul')
 const form = document.querySelector('form')
-/*
-// const trickInput = document.getElementById('input')
-// const trickDiff = document.querySelector('span')
 
-
-// const trickCallback = ({data: tricks}) => getTrick(tricks)
-
-// function createTrick(body){
-//     axios.post('/tricks', body)
-//     .then(trickCallback)
-//     .catch((error) => {
-//         console.log(error)
-//         })
-// }
-*/
 function updateTrick(id, type){
     axios.put(`/tricks/${id}`, {type})
     .then(res => {
         trickContainer.innerHTML = ''
-        console.log(res.data)
         makeTrickCard(res.data)
     })
     .catch((error) => {
@@ -40,38 +24,63 @@ function makeTrickCard(tricks){
     </div>
     <img src="/${tricks.gifAddress}">`
     trickCard.classList.add('trick')
-
-    trickContainer.appendChild(trickCard)
-    }
     
+    trickContainer.appendChild(trickCard)
+}
+
 function submitTrick(event){
     event.preventDefault()
-
-    let title = document.querySelector('#input')
-    const rating = document.querySelector('input[name="difficulty"]:checked')
+    
+    const title = document.querySelector('#input')
     const gif = document.querySelector('#gif')
+    const rating = document.getElementsByName('difficulty')
+    
+    function displayValue() {
+        let ans = 0
+        for(let i = 0; i < rating.length; i++){
+            if(rating[i].checked){
+                ans = +rating[i].value
+            }
+        }
+        return ans
+    }
+
+    // function submitFile() {
+    //     let theFile = gif.files[0]
+    
+    //     let formData = new FormData()
+    //     formData.append('name', title.value)
+    //     formData.append('difficulty', displayValue())
+    //     formData.append('gifAddress', theFile)
+    // }
 
     let bodyObj = {
         name: title.value,
-        difficulty: rating.value,
-        gif: gif.value
+        difficulty: displayValue(),
+        // gif: submitFile()
     }
-
-    // createTrick(bodyObj)
-
+    
+    createTrick(bodyObj)
+    
     title.value = ''
     rating.checked = false
     gif.value = ''
 }
-    
-    
+
+function createTrick(body){
+    axios.post('/tricks', body)
+    .then(alert('You made a new trick!'))
+    .catch((error) => {
+        console.log(error)
+        })
+}
+
 function getTrick(){
     trickContainer.innerHTML = ''
-
+    
     axios.get('/tricks')
     .then((res) => {
          let rand = Math.floor(Math.random() * res.data.length)
-         console.log(rand)
         makeTrickCard(res.data[rand])
     })
     .catch((error) => {
