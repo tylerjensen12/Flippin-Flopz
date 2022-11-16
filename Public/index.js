@@ -1,6 +1,7 @@
 const trickContainer = document.querySelector('ul')
 const form = document.querySelector('form')
 
+
 function updateTrick(id, type){
     axios.put(`/tricks/${id}`, {type})
     .then(res => {
@@ -22,7 +23,8 @@ function makeTrickCard(tricks){
     <button onclick="updateTrick(${tricks.id}, 'plus')">+</button>
     <button id="next" class="nextTrick" onclick="getTrick()">Next Trick</button>
     </div>
-    <img src="/${tricks.gifAddress}">`
+    <iframe src="${tricks.gifAddress}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+    // <img src="/${tricks.gifAddress}">
     trickCard.classList.add('trick')
     
     trickContainer.appendChild(trickCard)
@@ -30,16 +32,16 @@ function makeTrickCard(tricks){
 
 function submitTrick(event){
     event.preventDefault()
-    
+
     const title = document.querySelector('#input')
-    const gif = document.querySelector('#gif')
+    const gif = document.getElementById('gif')
     const rating = document.getElementsByName('difficulty')
     
     function displayValue() {
         let ans = 0
         for(let i = 0; i < rating.length; i++){
             if(rating[i].checked){
-                ans = +rating[i].value
+                ans = rating[i].value
             }
         }
         return ans
@@ -53,17 +55,19 @@ function submitTrick(event){
     //     formData.append('difficulty', displayValue())
     //     formData.append('gifAddress', theFile)
     // }
-
+    
     let bodyObj = {
         name: title.value,
         difficulty: displayValue(),
-        // gif: submitFile()
+        gifAddress: gif.value
     }
     
     createTrick(bodyObj)
-    
+
     title.value = ''
-    rating.checked = false
+    for(let i = 0; i < rating.length; i++){
+        rating[i].checked = false
+    }
     gif.value = ''
 }
 

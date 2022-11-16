@@ -131,7 +131,7 @@ h2 {
     font-size: 36px;
 }
 
-img {
+iframe {
     width: 415px;
     height: 415px;
     border-radius: 20px;
@@ -142,12 +142,6 @@ img {
     justify-content: space-evenly;
     margin: 10px;
     width: 700px;
-}
-
-video {
-    width: 425px;
-    height: 425px;
-    border-radius: 20px;
 }
 
 .nextTrick {

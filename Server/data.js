@@ -71,7 +71,7 @@ module.exports = {
         //     id: 12,
         //     name: 'Back Spin',
         //     difficulty: 3,
-        //     gifAddress: 'backSpin.gif',
+        //     gifAddress: '',
         // },
         {
             id: 13,

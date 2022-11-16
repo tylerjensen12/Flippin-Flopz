@@ -1,15 +1,14 @@
 const express = require('express')
 const path = require('path')
-const fileUpload = require('express-fileupload')
 require('dotenv').config()
 
 const app = express()
 
 app.use(express.json())
-app.use(fileUpload())
 app.use(express.static('Pics'))
 
-const {tricks} = require("./data")
+// const {tricks} = require("./data")
+const {tricks} = require("./data2")
 
 app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "../Public/Welcome.html"))
@@ -42,7 +41,6 @@ app.put("/tricks/:id", (req, res) => {
 })
 
 app.post('/tricks', (req, res) => {
-    const file = req.files.gif
     const {name, difficulty, gifAddress} = req.body
 
     let greatestId = -1
