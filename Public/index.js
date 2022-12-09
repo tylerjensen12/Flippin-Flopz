@@ -15,7 +15,7 @@ function updateTrick(id, type){
 
 function makeTrickCard(tricks){
     let trickCard = document.createElement('div')
-    trickCard.innerHTML = `<h2>${tricks.name}</h2>
+    trickCard.innerHTML = `<h2 class="name">${tricks.name}</h2>
     <div class="next">
     <button onclick="updateTrick(${tricks.id}, 'minus')">-</button>
     <p class="difficulty">Difficulty: </p>
@@ -55,7 +55,6 @@ function submitTrick(event){
     //     formData.append('difficulty', displayValue())
     //     formData.append('gifAddress', theFile)
     // }
-    
     let bodyObj = {
         name: title.value,
         difficulty: displayValue(),
@@ -73,7 +72,7 @@ function submitTrick(event){
 
 function createTrick(body){
     axios.post('/tricks', body)
-    .then(alert('You made a new trick!'))
+    .then(Swal.fire('You made a new trick!'))
     .catch((error) => {
         console.log(error)
         })
